@@ -53,7 +53,7 @@ class CategoryTestCase(SkyproTestCase, TemplateMixin):
         li_elements = soup.ul.find_all('li')
         self.assertTrue(
             len(li_elements) == 2,
-            "%@Проверьте что поиск по категориям работает корректно"
+            "%@Проверьте что поиск по категориям работает корректно, также проверьте, правильно ли указано имя query-параметра"
         )
 
     def test_search_quest_works_correct(self):
@@ -61,7 +61,7 @@ class CategoryTestCase(SkyproTestCase, TemplateMixin):
         li_elements = soup.ul.find_all('li')
         self.assertTrue(
             len(li_elements) == 1,
-            "%@Проверьте что поиск по категориям работает корректно"
+            "%@Проверьте что поиск по категориям работает корректно, также проверьте, правильно ли указано имя query-параметра"
         )
         soup = self.check_code_and_get_soup("/tours?category=Qu", 200)
         li_elements = soup.ul.find_all('li')

@@ -17,8 +17,6 @@ def get_by_category():
     tours_match = []
     if category:
         tours_match = [x for x in tours if x.get("category").lower().startswith(category.lower())]
-    if not tours_match:
-        tours_match = tours
     return render_template("index.html", tours_match=tours_match, category=category)
 
 

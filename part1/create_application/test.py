@@ -57,7 +57,7 @@ class SettingsTestCase(SkyproTestCase, TemplateMixin):
         response = self.app.post('/enroll', data=data)
         self.assertNotIn(
             response.status_code, [500, 404, 400],
-            r'%@Проверьте, что POST-запрос на адрес /enroll обрабатывается без ошибок'
+            '%@Проверьте, что POST-запрос на адрес /enroll обрабатывается без ошибок'
         )
 
         soup = BeautifulSoup(response.get_data(True), "html.parser")
@@ -74,7 +74,7 @@ class SettingsTestCase(SkyproTestCase, TemplateMixin):
         finish_len = len(current_data)
         self.assertEqual(
             start_len + 1, finish_len,
-            "%@Проверьте что после POST-запроса на адрес и заполения формы, данные записываются в файл"
+            "%@Проверьте что после POST-запроса на адрес /enroll и заполения формы, данные записываются в файл"
         )
         for label in ['name', 'email', 'phone']:
             obj = current_data[-1].get(label)
