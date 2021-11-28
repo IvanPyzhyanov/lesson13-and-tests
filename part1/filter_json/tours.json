@@ -1,0 +1,8 @@
+[
+    { "title": "Винный тур", "price_tur": 2000, "category": "bus" },
+    { "title": "Тифлис - город модерна", "price_tur": 4900, "category": "walk" },
+    { "title": "Квест-экскурсия по Тбилиси", "price_tur": 5800, "category": "quest" },
+    { "title": "Лучшие панорамы вечернего города", "price_tur": 1800, "category": "walk"},
+    { "title": "Болгар — Северная Мекка", "price_tur": 1800, "category": "bus" }
+]
+  
