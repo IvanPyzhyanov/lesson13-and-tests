@@ -9,20 +9,29 @@
 #
 #
 import os
-from flask import Flask
+from flask import Flask, request, render_template
+import json
 from pathlib import Path
+
 app = Flask(__name__)
 
 
-@app.route("/enroll",methods=[...])
+@app.route("/enroll", methods=['GET'])
 def form_show():
-    # TODO Напишите Ваш код здесь
-    pass
+    return render_template('index.html')
 
-@app.route("/enroll",methods=[...])
+@app.route("/enroll", methods=['POST'])
 def form_submit():
-    # TODO Напишите Ваш код здесь
-    pass
+    name = request.form.get("name")
+    email = request.form.get("email")
+    phone = request.form.get("phone")
+    input_data = {"name": name, "email": email, "phone": phone}
+    with open("enrollments.json", 'r', encoding="UTF-8") as file:
+        save_data = json.load(file)
+        save_data.append(input_data)
+    with open("enrollments.json", 'w', encoding="UTF-8") as file:
+        json.dump(save_data, file, ensure_ascii=False)
+    return "Данные записаны"
 
 
 if __name__ == "__main__":

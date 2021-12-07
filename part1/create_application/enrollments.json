@@ -3,5 +3,10 @@
         "name": "skypro_user",
         "email": "user@sky.pro",
         "phone": "+71112223344"
+    },
+    {
+        "name": "Tester",
+        "email": "rest@test.ru",
+        "phone": "+7(990)987-68-98"
     }
 ]
