@@ -16,9 +16,8 @@
 # </ul>
 #
 
-from flask import Flask
+from flask import Flask, render_template, request
 app = Flask(__name__)
-
 
 tours =   [
    { "title": "Винный тур", "price_tur": 2000 },
@@ -31,8 +30,13 @@ tours =   [
 
 @app.route("/tours")
 def page_index():
-    # TODO напишите код здесь
-    pass
+    s = request.args.get("s")
+    match_tour = []
+    if s:
+        for tour in tours:
+            if s.lower() in tour["title"].lower():
+                match_tour.append(tour["title"])
+    return render_template("index.html", match_tour=match_tour, count_tour=len(match_tour))
 
 if __name__ == "__main__":
     app.run()

@@ -9,10 +9,11 @@
        <input type="text" name="s" value="{{ s }}">
        <input type="submit" value="Искать">
    </form>
-<h1>Найдено: 0</h1>
+<h1>Найдено: {{ count_tour }}</h1>
 <ul>
-    <li>Найденный элемент 1</li>
-    <li>Найденный элемент 2</li>
+    {% for tour in match_tour %}
+        <li>{{ tour }}</li>
+    {% endfor %}
 </ul>
 
 </body>
