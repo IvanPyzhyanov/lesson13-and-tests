@@ -9,9 +9,7 @@
 # Регистр не учитывается.
 # 
 
-import os
-from flask import Flask
-from pathlib import Path
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
 tours =   [
@@ -24,9 +22,14 @@ tours =   [
 
 @app.route("/tours")
 def get_by_category():
-    # TODO Напишите свою функцию здесь
-    pass
+    cat = request.args.get("category")
+    match_cat = []
+    if cat:
+        match_cat = [category for category in tours if cat.lower() in category["category"].lower()]
+    else:
+        return render_template("index.html", match_cat=tours)
+    return render_template("index.html", match_cat=match_cat)
 
-if __name__ == "__main__":
-    os.chdir(Path(os.path.abspath(__file__)).parent)  # Эта строка необходима, чтобы правильно искать json хранилища
-    app.run()
+app.run()
+
+

@@ -7,13 +7,14 @@
 <body>
 <h1>Доступные категории:</h1>
 <p>bus, walk, quest</p>
-<form action="" method="">
-   <input type="text" name="category">
+<form action="/tours" method="GET">
+   <input type="text" name="category" placeholder="Enter category">
    <input type="submit" value="Найти">
 </form>
 <ul>
-  <li> Название тура</li>
-  <li> Название тура</li>
+  {% for cat in match_cat %}
+  <li>{{ cat.title }}</li>
+  {% endfor %}
 </ul>
 </body>
 </html>
