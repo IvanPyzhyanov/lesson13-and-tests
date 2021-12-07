@@ -40,10 +40,10 @@ class FileTestCase(SkyproTestCase, TemplateMixin):
 
     def test_try_upload_file(self):
         file = open(self.filename, 'rb')
-        response = self.app.post('/upload', data={"thefile": file}, content_type='multipart/form-data')
+        response = self.app.post('/uploads', data={"thefile": file}, content_type='multipart/form-data')
         self.assertTrue(
             response.status_code==200,
-            ('%@Проверьте, что при post-запросе на адрес /upload с загрузкой файла '
+            ('%@Проверьте, что при post-запросе на адрес /uploads с загрузкой файла '
              'не происходит ошибок'
         ))
         

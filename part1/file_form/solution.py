@@ -7,7 +7,7 @@ app = Flask(__name__)
 def upload_page():
     return render_template("form.html")
 
-@app.route('/upload', methods=['POST'])
+@app.route('/uploads', methods=['POST'])
 def upload_file():
     file = request.files['thefile']
     path = Path(os.path.abspath(__file__)).parent
