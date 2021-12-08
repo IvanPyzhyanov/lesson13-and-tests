@@ -5,18 +5,24 @@
 #
 # Если ни один из параметов не указан, возвращается полный список. 
 
-import os
-from pathlib import Path
-from flask import Flask
+# import os
+# from pathlib import Path
+from flask import Flask, json, request, jsonify
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
 @app.route("/tours")
 def page_index():
-    # TODO напишите Ваш код здесь
-    pass
+    with open("tours.json", "r", encoding="UTF-8") as file:
+        data = json.load(file)
+    price_from = request.args.get("from")
+    price_to = request.args.get("to")
+    if price_from:
+        data = [base for base in data if int(price_from) <= base["price_tur"]]
+    if price_to:
+        data = [base for base in data if int(price_to) >= base["price_tur"]]
+    return jsonify(data)
 
-
-if __name__ == "__main__":
-    os.chdir(Path(os.path.abspath(__file__)).parent)
-    app.run()
+app.run()
+# if __name__ == "__main__":
+#     os.chdir(Path(os.path.abspath(__file__)).parent)

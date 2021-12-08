@@ -1,7 +1,12 @@
 [
     {
-        "phone": "+79213303030",
+        "email": "user@sky.pro",
         "name": "Валерий Александров",
-        "email": "user@sky.pro"
+        "phone": "+79213303030"
+    },
+    {
+        "email": "kesha@bg.com",
+        "name": "Kesha",
+        "phone": "98908023452"
     }
 ]
