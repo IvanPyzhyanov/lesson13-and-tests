@@ -15,18 +15,23 @@
 # Пример запроса с параметром:
 # /tours?search=бо
 
-import os
-from pathlib import Path
-from flask import Flask
+# import os
+# from pathlib import Path
+from flask import Flask, json, request, jsonify
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
 @app.route("/tours", methods=["GET"])
 def get_tours():
-    # TODO напишите Ваш код здесь
-    pass
+    with open("tours.json", "r", encoding="UTF-8") as file:
+        data = json.load(file)
+    s = request.args.get("search")
+    if s:
+        match_data = [base for base in data if s.lower() in base["title"].lower()]
+        return jsonify(match_data)
+    return jsonify(data)
 
+app.run()
+# if __name__ == "__main__":
+#     os.chdir(Path(os.path.abspath(__file__)).parent)
 
-if __name__ == "__main__":
-    os.chdir(Path(os.path.abspath(__file__)).parent)
-    app.run()
